@@ -2,6 +2,44 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.2.
 
+**Stack:** Angular 22.1.4 + PrimeNG 22.1.0 + AG Grid Enterprise 36.1.0
+
+## Project setup (quick reference)
+
+How this project was bootstrapped, kept here for spinning up a similar project again.
+The same steps are packaged as a reusable Claude Code skill at
+[.claude/skills/new-prime-ag-project/SKILL.md](.claude/skills/new-prime-ag-project/SKILL.md).
+
+```bash
+ng new project_name
+
+npm install primeng@22.1.0 primeicons
+npm install ag-grid-angular@36.1.0 ag-grid-community@36.1.0 ag-grid-enterprise@36.1.0
+
+# verify versions
+npm list angular
+npm list primeng
+npm list ag-grid-angular
+npm list ag-grid-community
+npm list ag-grid-enterprise
+ng version
+```
+
+### Optional dev tooling
+
+```bash
+npm install --save-dev husky json-server source-map-explorer
+
+ng lint
+npx husky init
+```
+
+### Test coverage
+
+```bash
+npm i -D @vitest/coverage-v8@4.0.8
+```
+
 ## Development server
 
 To start a local development server, run:
