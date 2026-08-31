@@ -3,14 +3,7 @@
 <p-button pButton label="Test PrimeNG"></p-button>
 <hr />
 
-<ag-grid-angular
-  style="width: 100%; height: 500px"
-  [rowData]="rowData"
-  [columnDefs]="columnDefs"
-  [pagination]="true"
-  [paginationPageSize]="10"
-  [paginationPageSizeSelector]="[10, 20, 50, 100]"
->
-</ag-grid-angular>
+<app-ssrm />
+<!-- <app-csrm /> -->
 
 <router-outlet />

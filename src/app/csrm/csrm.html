@@ -1,0 +1,15 @@
+<ag-grid-angular
+  style="width: 100%; height: 600px"
+  rowModelType="clientSide"
+  [rowData]="rowData$ | async"
+  [columnDefs]="columnDefs"
+  [pagination]="true"
+  [paginationPageSize]="10"
+  [paginationPageSizeSelector]="[10, 20, 50]"
+  /* [sideBar]="true" */
+  [sideBar]="sideBar"
+  [statusBar]="statusBar"
+  rowSelection="multiple"
+  (selectionChanged)="onSelectionChanged($event)"
+>
+</ag-grid-angular>

@@ -1,0 +1,20 @@
+<ag-grid-angular
+  style="width: 100%; height: 600px"
+  rowModelType="serverSide"
+  // clientSide
+  [columnDefs]="colDef"
+  // this is for clinet side only
+  /* [rowData]="rowData$ | async" */
+  // below is for server side only
+  [serverSideDatasource]="serverSideDatasource"
+  // 100 is default
+  [cacheBlockSize]="50"
+  // unlimited is default
+  /* [maxBlocksInCache]="1" */
+  [pagination]="true"
+  [paginationPageSize]="20"
+  [paginationPageSizeSelector]="[10, 20, 30, 40, 50]"
+  [sideBar]="sideBar"
+  (selectionChanged)="onRowSelection($event)"
+  rowSelection="single"
+/>
