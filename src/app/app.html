@@ -1,9 +1,13 @@
 <h1>{{ title() }}</h1>
 <hr />
-<p-button pButton label="Test PrimeNG"></p-button>
+<div class="nav-buttons">
+  <button pButton type="button" routerLink="csrm" routerLinkActive="active">
+    Client Side Row Model
+  </button>
+  <button pButton type="button" routerLink="ssrm" routerLinkActive="active">
+    Server Side Row Model
+  </button>
+</div>
 <hr />
-
-<app-ssrm />
-<!-- <app-csrm /> -->
 
 <router-outlet />

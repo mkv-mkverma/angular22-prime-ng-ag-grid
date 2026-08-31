@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref, RouterLinkActive } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 
 import { AllEnterpriseModule, ModuleRegistry } from 'ag-grid-enterprise';
-import { Csrm } from './csrm/csrm';
-import { Ssrm } from "./ssrm/ssrm";
+
 //It registers all AG Grid Enterprise (+ Community)
 // features globally, once, before any grid renders —
 // without it, AG Grid's modular architecture
@@ -13,7 +12,7 @@ ModuleRegistry.registerModules([AllEnterpriseModule]);
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ButtonModule, Csrm, Ssrm],
+  imports: [RouterOutlet, ButtonModule, RouterLinkWithHref, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
