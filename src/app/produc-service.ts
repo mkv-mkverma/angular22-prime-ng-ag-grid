@@ -2,7 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AdvancedFilterModel, FilterModel } from 'ag-grid-community';
+import {
+  AdvancedFilterModel,
+  FilterModel,
+  NumberFilterModel,
+  TextFilterModel,
+} from 'ag-grid-community';
 export interface IProducts {
   id: number;
   title: string;
@@ -35,12 +40,18 @@ export class ProducService {
   ): Observable<IApiResponse> {
     let url = `https://dummyjson.com/products`;
 
-    const titleFilter =
-      filterModel && 'title' in filterModel ? (filterModel as any)['title'] : undefined;
-    const categoryFilter =
-      filterModel && 'category' in filterModel ? (filterModel as any)['category'] : undefined;
-    const priceFilter =
-      filterModel && 'price' in filterModel ? (filterModel as any)['price'] : undefined;
+    const titleFilter: TextFilterModel | undefined =
+      filterModel && 'title' in filterModel
+        ? (filterModel as FilterModel)['title']
+        : undefined;
+    const categoryFilter: TextFilterModel | undefined =
+      filterModel && 'category' in filterModel
+        ? (filterModel as FilterModel)['category']
+        : undefined;
+    const priceFilter: NumberFilterModel | undefined =
+      filterModel && 'price' in filterModel
+        ? (filterModel as FilterModel)['price']
+        : undefined;
 
     const titleSearch = titleFilter?.filter;
     const categoryValue = categoryFilter?.filter;
@@ -75,25 +86,23 @@ export class ProducService {
     );
   }
 
-  private matchesNumberFilter(
-    value: number,
-    filter: { type: string; filter: number; filterTo?: number },
-  ): boolean {
+  private matchesNumberFilter(value: number, filter: NumberFilterModel): boolean {
+    const filterValue = filter.filter ?? 0;
     switch (filter.type) {
       case 'equals':
-        return value === filter.filter;
+        return value === filterValue;
       case 'notEqual':
-        return value !== filter.filter;
+        return value !== filterValue;
       case 'lessThan':
-        return value < filter.filter;
+        return value < filterValue;
       case 'lessThanOrEqual':
-        return value <= filter.filter;
+        return value <= filterValue;
       case 'greaterThan':
-        return value > filter.filter;
+        return value > filterValue;
       case 'greaterThanOrEqual':
-        return value >= filter.filter;
+        return value >= filterValue;
       case 'inRange':
-        return value >= filter.filter && value <= (filter.filterTo ?? filter.filter);
+        return value >= filterValue && value <= (filter.filterTo ?? filterValue);
       default:
         return true;
     }
